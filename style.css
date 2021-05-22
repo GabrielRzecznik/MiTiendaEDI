@@ -4,7 +4,7 @@
 }
 
 body{
-    background: url('img/fondo.jpg');
+    background: url('img/fondo\ 2.jpg');
     width: auto;
     height: auto;
     background-position: center;
@@ -14,27 +14,38 @@ body{
 }
 
 .colorear1{
-    background-color: white;
+    background-color: #414141;
     padding-left: 25px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-}
-
-.colorear2{
-    background-color: white;
     padding-right: 25px;
     padding-top: 25px;
     padding-bottom: 25px;
 }
 
-.espaciado{
-    padding-top: 150px;
+.colorear2{
+    background: url('img/ferrari.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
-.textGris{
-    color: gray;
+.espaciado{
+    padding-top: 12%;
+}
+
+.texto{
+    color: rgb(216, 216, 216);
 }
 
 .centrado{
     text-align: center;
+}
+
+.inputs{
+    background-color: rgb(216, 216, 216);
+    border-color: rgb(63, 63, 63);
+}
+
+.logo{
+    width: 19%;
+    height: 19%;
+    float: right;
 }
