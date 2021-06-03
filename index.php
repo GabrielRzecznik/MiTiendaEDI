@@ -11,7 +11,7 @@
     <link rel="icon" href="img/icono.ico">
     <title>Login - Rz Automóviles</title>
 </head>
-<body>
+<body onload="formularioRz()">
     <div class="container espaciado">
         <div class="row">
             <div class="col-md-2"></div>
@@ -28,7 +28,7 @@
                     <input type="password" class="form-control inputs" name="contraseña" id="contraseña">
                     <br>
                     <div class="centrado"> 
-                        <button type="submit" class="boton btn btn-secondary" name="loginB">
+                        <button type="submit" class="boton btn btn-secondary" name="boton" id="boton">
                             <span id="loguearse">Iniciar Sesión</span>
                             <span class="invisible" id="cargando">
                                 <div class="sk-cube-grid">
@@ -55,7 +55,6 @@
                         <br>Permite espacio, guion medio y bajo.
                         <br>No permite caracteres especiales ni digitos.
                     </div>
-
                     <!--Alerta Contraseña-->
                     <div class="alert alert-warning alert-dismissible fade show alerta" role="alert" id="alertCont">
                         <i class="bi bi-info-circle-fill"></i>
