@@ -1,17 +1,39 @@
-//Contador de Vocales
-function contarVocales(texto) {
-    return texto.replace(/[^aeiouAEIOU]/g, '').length;
-};
+//Metodo Loud
+function formularioRz(){
+    var usuario = document.getElementById("usuario");
+    var contraseña = document.getElementById("contraseña");
+    var boton = document.getElementById("boton");
+    
+    usuario.focus();
 
-//Contador de Consonantes
-function contarConsonantes(texto) {
-    return texto.replace(/[^bcdfgklmnñpqrstvwxyzBCDFGKLMNÑPQRSTVWXYZ]/g, '').length;
-};
+    const enter = (e) => {
+        switch (e.target.name) {
+            case 'usuario':
+                if (e.keyCode === 13) {
+                    contraseña.focus();
+                }
+                break;
+            case 'contraseña':
+                if (e.keyCode === 13) {
+                    boton.focus();
+                    enviarFormulario();
+                }
+                break;
+            case 'boton':
+                
+                break;
+            default:
+                enviarFormulario();
+                break;
+        }
+    };
 
+    usuario.addEventListener('keypress', enter);
+    contraseña.addEventListener('keypress', enter);
+    boton.addEventListener('click', enter);
+}
 
-
-//Validar Campos
-const formulario = document.getElementById('formulario');
+//Validación de Campos
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
@@ -74,37 +96,39 @@ inputs.forEach((input) => {
     input.addEventListener('blur' , validarFormulario);//cuando me salgo y preciono fuera del input
 });
 
-formulario.addEventListener('submit', (e) => {
-    const usuarioValue = usuario.value.trim();
-    const contraseñaValue = contraseña.value.trim();
 
-    if (usuarioValue === "") {
-        alert("Usuario vacio");
-    }if (contraseñaValue === "") {
-        alert("Contraseña vacia")
-    }
+//Envia el formulario - Siempre en cuando no esten vacios los campos
+function enviarFormulario() {
+    const formulario = document.getElementById('formulario');
     
-    e.preventDefault();//evita que se envien los datos y se refresque la pagina
+    formulario.addEventListener('submit', (e) => {
+        const usuarioValue = usuario.value.trim();
+        const contraseñaValue = contraseña.value.trim();
+    
+        if (usuarioValue === "") {
+            alert("Usuario vacio");
+        }if (contraseñaValue === "") {
+            alert("Contraseña vacia")
+        }
+        
+        e.preventDefault();//evita que se envien los datos y se refresque la pagina
+    
+       if (campos.usuario && campos.contraseña) {
+           //Iniciar sessión
+           document.querySelector('#cargando').classList.remove('invisible');//Logo de carga
+           document.querySelector('#loguearse').classList.add('invisible');//Esconde el texto del boton
+           
+           //Desmarcar todos los inputs
+           document.querySelectorAll('#iconoU').forEach((icono) => {
+            icono.classList.remove('error');
+           });
+           document.querySelectorAll('#iconoC').forEach((icono) => {
+            icono.classList.remove('error');
+           });
+       }else{
+           alert("No se pudo iniciar sesión");
+       }
+    
+    }); 
+}
 
-   if (campos.usuario && campos.contraseña) {
-        //Vaciar inputs
-        //formulario.reset();
-       
-       //Iniciar sessión
-       document.querySelector('#cargando').classList.remove('invisible');//Logo de carga
-       document.querySelector('#loguearse').classList.add('invisible');//Esconde el texto del boton
-       
-       //Desmarcar todos los inputs
-       document.querySelectorAll('#iconoU').forEach((icono) => {
-        icono.classList.remove('error');
-       });
-       document.querySelectorAll('#iconoC').forEach((icono) => {
-        icono.classList.remove('error');
-       });
-   }else{
-       alert("No se pudo iniciar sesión");
-   }
-
-});
-
-//Focus
