@@ -118,6 +118,12 @@ function enviarFormulario() {
            document.querySelector('#cargando').classList.remove('invisible');//Logo de carga
            document.querySelector('#loguearse').classList.add('invisible');//Esconde el texto del boton
            
+            //Enviar
+            var Datos = new FormData();
+            Datos.append("usu",$("usuario").value);
+            Datos.append("con",$("contraseña").value);
+            console.log(Datos);
+
            //Desmarcar todos los inputs
            document.querySelectorAll('#iconoU').forEach((icono) => {
             icono.classList.remove('error');
